@@ -1,0 +1,35 @@
+{
+  "name": "watchmon",
+  "homepage": "http://github.com/jawerty/watchmon",
+  "author": "Jared Wright (http://wrightdev.herokuapp.com/jawerty)",
+  "bin": {
+    "watchmon": "./watchmon.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jawerty/watchmon.git"
+  },
+  "description": "Simple file monitor script for restarting your development node.js server",
+  "keywords": [
+    "monitor",
+    "file",
+    "development",
+    "restart",
+    "autoload",
+    "reload",
+    "terminal"
+  ],
+  "version": "0.1.5",
+  "preferGlobal": "true",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/MIT"
+    }
+  ],
+  "main": "./watchmon",
+  "directories": {
+    "test": "test"
+  },
+  "license": "MIT"
+}
