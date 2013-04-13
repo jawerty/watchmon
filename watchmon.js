@@ -8,6 +8,7 @@ end = '\u001b[0m';
 /************/
 var exec = require('child_process').exec,
     child;
+
 var help = '\nwatchmon is a file monitoring program that restarts a node process whenever is sees a file change. \
 \n\nUsage: \n\twatchmon [file] [options]\nOptions:\n\t-h, --help\tHelp screen\n\t-v, --version\tCurrent version\n\t-n, \
 --no-stdout\tDon\'t read stdout\n\t-e, --exit\tExit the process when the app crashed\n\t-d, --delay t\tDelays restart for \
@@ -82,31 +83,31 @@ if(isEmpty(argv)){ //running with no arguments defaults to help message
 ////////////////
 
 start = function(file, curr, prev, noStdout){
-	setTimeout(function(){
-		child = exec('node ' + file,
-			function (error, stdout, stderr) {
-				if (error !== null) {
-					util.error('exec error: ' + error);
-				}
-			}
-		);
-		if(noStdout === false){
-			child.stdout.pipe(process.stdout);
+  setTimeout(function(){
+    child = exec('node ' + file,
+	  function (error, stdout, stderr) {
+	    if (error !== null) {
+		  util.error('exec error: ' + error);
 		}
+	  }
+	);
+	if(noStdout === false){
+	  child.stdout.pipe(process.stdout);
+	}
 
-		child.on('exit', function(code, signal){
-			if (signal === 'SIGUSR2') {
-			  //start()
-			} else if (code === 0) { 
-		      util.puts(green_start+'watchmon clean exit'+end);
-		    } else {
-		      util.puts(yel_start+'watchmon app crash...'+end);
-		      if(exitcrash === true){
-		      	process.exit()
-		      }
-		    }
-		});
-	}, seconds);
+	child.on('exit', function(code, signal){
+	  if (signal === 'SIGUSR2') {
+	    //start()
+	  } else if (code === 0) { 
+	    util.puts(green_start+'watchmon clean exit'+end);
+	  } else {
+		util.puts(yel_start+'watchmon app crash...'+end);
+		if(exitcrash === true){
+		  process.exit()
+		}
+	  }
+	});
+  }, seconds);
 }
 
 file = argv[0] || undefined;
@@ -135,7 +136,7 @@ main = function(file){
 };
 
 process.on("SIGINT", function(){ //catches app when shutdown
-	exit(yel_start+'watchmon shutting down...'+end);
+	exit(yel_start+'...watchmon shutting down...'+end);
 });
 process.on('uncaughtException', function (err) { //catches all uncaught exceptions
     util.error(yel_start+err+end);
