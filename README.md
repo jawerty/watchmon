@@ -1,5 +1,5 @@
 # watchmon
-A file monitor that restarts your node.js application when changes are made. Does not require anything other than node and npm. 
+A file monitor program that restarts your node.js application when changes are made. Does not require anything other than node and npm. 
 
 Current version: 0.1.5
 
