@@ -9,9 +9,9 @@ end = '\u001b[0m';
 var exec = require('child_process').exec,
     child;
 
-var help = '\nwatchmon is a file monitoring program that restarts a node process whenever is sees a file change. \
+var help = '\nwatchmon is a file monitoring script that restarts a node process whenever is sees a file change. \
 \n\nUsage: \n\twatchmon [file] [options]\nOptions:\n\t-h, --help\tHelp screen\n\t-v, --version\tCurrent version\n\t-n, \
---no-stdout\tDon\'t read stdout\n\t-e, --exit\tExit the process when the app crashed\n\t-d, --delay t\tDelays restart for \
+--no-stdout\tDon\'t read from stdout\n\t-e, --exit\tExit the process when the app crashed\n\t-d, --delay t\tDelays restart for \
 t seconds';
 var version = '0.1.5';
 var noStdout = exitcrash = false;
